@@ -1,10 +1,13 @@
 #include <cstdio>
 #include <GLFW/glfw3.h>
+#include <_Time.h>
 
 int main()
 {
 	printf("%d\n", glfwInit());
-	GLFWwindow* window = glfwCreateWindow(100, 100, "ahh", NULL, NULL);
+	Timer timer;
+	timer.begin();
+	GLFWwindow* window = glfwCreateWindow(500, 500, "ahh", NULL, NULL);
 	glfwMakeContextCurrent(window);
 	while (!glfwWindowShouldClose(window))
 	{
@@ -13,6 +16,7 @@ int main()
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-
+	timer.end();
+	timer.print();
 	glfwTerminate();
 }

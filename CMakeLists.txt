@@ -38,6 +38,13 @@ mark_as_advanced(
 
 list(APPEND REN_INCLUDE_DIRECTORIES "dependencies/glfw/include")
 
+set(TINY_STL_BUILD_TESTS OFF CACHE BOOL " " FORCE)
+add_subdirectory(dependencies/tiny-stl)
+mark_as_advanced(
+	TINY_STL_BUILD_TESTS
+)
+list(APPEND REN_INCLUDE_DIRECTORIES "dependencies/tiny-stl/include")
+
 find_package(GLEW REQUIRED)
 list(APPEND REN_INCLUDE_DIRECTORIES ${GLEW_INCLUDE_DIRS})
 set(REN_LIBRARIES ${REN_LIBRARIES} GL ${GLEW_LIBRARIES} $<TARGET_OBJECTS:glfw_objects> ${CMAKE_DL_LIBS})
